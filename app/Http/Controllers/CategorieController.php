@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Categorie;
 use App\Http\Controllers\Api\BaseController;
-use App\Produit;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
-class ProduitController extends BaseController
+class CategorieController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class ProduitController extends BaseController
      */
     public function index()
     {
-        $produits =Produit::all();
+        $categories = Categorie::all();
 
-        return $this->sendResponse($produits->toArray(),'list produits .');
+        return $this->sendResponse($categories,'list Categories');
     }
 
     /**
@@ -39,29 +38,16 @@ class ProduitController extends BaseController
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'name' => 'required | string | min:3',
-            'description' =>'required | string  ',
-            'prix' => 'required'
-        ]);
-
-        if ($validator->fails()){
-
-            return $this->sendError('error validator',$validator->errors());
-        }
-
-        $pr = Produit::create($request->all());
-
-        return $this->sendResponse($pr->toArray(),'store successfuly');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Produit  $produit
+     * @param  \App\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function show(Produit $produit)
+    public function show(Categorie $categorie)
     {
         //
     }
@@ -69,10 +55,10 @@ class ProduitController extends BaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Produit  $produit
+     * @param  \App\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Produit $produit)
+    public function edit(Categorie $categorie)
     {
         //
     }
@@ -81,10 +67,10 @@ class ProduitController extends BaseController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Produit  $produit
+     * @param  \App\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produit $produit)
+    public function update(Request $request, Categorie $categorie)
     {
         //
     }
@@ -92,10 +78,10 @@ class ProduitController extends BaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Produit  $produit
+     * @param  \App\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produit $produit)
+    public function destroy(Categorie $categorie)
     {
         //
     }
